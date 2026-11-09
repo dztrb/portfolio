@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+  <title>Skills | MACLEAN.DEV</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <script>(function(){var k='maclean-dev-theme-mode',t='light';try{var m=localStorage.getItem(k);if(m==='dark')t='dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],heading:['Space Grotesk','sans-serif'],brand:['Space Grotesk','DM Sans','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{ink:'#1e293b',body:'#64748b',line:'#e2e8f0',cloud:'#faf9f6',brand:'#14b8a6',accent:'#f97316',deep:'#0f172a',mint:'#10b981'},boxShadow:{sleek:'0 24px 48px -28px rgba(15,23,42,0.28)','sleek-sm':'0 12px 28px -16px rgba(15,23,42,0.18)'}}}}
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities{.soft-grid{background-image:linear-gradient(rgba(20,184,166,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,0.04) 1px,transparent 1px);background-size:44px 44px;}[data-theme="dark"] .soft-grid{background-image:linear-gradient(rgba(20,184,166,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,0.06) 1px,transparent 1px);}.reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}.reveal.is-visible{opacity:1;transform:translate3d(0,0,0);}.reveal-scale{transform:translate3d(0,12px,0) scale(.97);}.reveal-scale.is-visible{transform:translate3d(0,0,0) scale(1);}.reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.18s;}.reveal-delay-3{transition-delay:.26s;}.reveal-delay-4{transition-delay:.34s;}.reveal-delay-5{transition-delay:.42s;}@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}.brand-icon{--brand-icon-size:2.75rem;width:var(--brand-icon-size);height:var(--brand-icon-size);border-radius:50%;flex-shrink:0;background:conic-gradient(from 0deg,transparent 0deg 22deg,#14b8a6 22deg 158deg,transparent 158deg 202deg,#f97316 202deg 338deg,transparent 338deg 360deg);display:grid;place-items:center;padding:3px;}.brand-icon__inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:-.03em;color:#0f172a;background:#fff;}[data-theme="dark"] .brand-icon__inner{background:#1e293b;color:#e2e8f0;}.brand-tagline{margin-top:.125rem;line-height:1;}.brand-wordmark{font-family:'Space Grotesk','DM Sans',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:.92;}.brand-wordmark .brand-name{font-weight:600;}.brand-wordmark .brand-suffix{font-weight:700;}.cta-talk{position:relative;overflow:hidden;isolation:isolate;animation:cta-talk-pulse 2.6s ease-in-out infinite;}.cta-talk::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.14) 50%,transparent 62%);transform:translateX(-120%);animation:cta-talk-shine 3.2s ease-in-out infinite;pointer-events:none;}.cta-talk__inner{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.375rem;}.cta-talk__arrow{display:inline-flex;animation:cta-talk-arrow 1.35s ease-in-out infinite;}@keyframes cta-talk-pulse{0%,100%{box-shadow:0 0 0 0 rgba(20,184,166,0);}50%{box-shadow:0 0 0 3px rgba(20,184,166,.22);}}@keyframes cta-talk-shine{0%,72%,100%{transform:translateX(-120%);}28%{transform:translateX(120%);}}@keyframes cta-talk-arrow{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}@media(prefers-reduced-motion:reduce){.cta-talk,.cta-talk::after,.cta-talk__arrow{animation:none;}}}
+      html, body { overflow-x: clip; max-width: 100%; width: 100%; }
+header { position: -webkit-sticky !important; position: sticky !important; top: 0 !important; z-index: 50 !important; }
+[data-theme="dark"] header .bg-white\/95 { background: rgba(30, 41, 59, 0.95) !important; }
+      @media (max-width: 400px) {
+        .brand-icon { --brand-icon-size: 2.3rem !important; }
+        .brand-wordmark { font-size: 1.18rem !important; }
+        .brand-tagline { font-size: 8px !important; }
+      }
+    @keyframes gradShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+    .grad-text{background:linear-gradient(135deg,#0d9488,#14b8a6,#f97316);background-size:200% 200%;animation:gradShift 4s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .skill-bar{position:relative;height:7px;background:#ccfbf1;border-radius:999px;overflow:hidden;}
+    .skill-bar-fill{height:100%;border-radius:999px;background:linear-gradient(to right,#0d9488,#14b8a6,#f97316);transition:width 1.5s cubic-bezier(.25,.46,.45,.94);width:0;}
+    .skill-bar-fill.active{width:var(--fw);}
+    .tech-b{transition:all .3s;}.tech-b:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(20,184,166,.18);border-color:rgba(20,184,166,.3)!important;}
+    [data-theme="dark"] body{background:#0f172a;color:#e2e8f0;}
+    [data-theme="dark"] .bg-white{background:#1e293b !important;}
+    [data-theme="dark"] .bg-cloud{background:#0f172a !important;}
+    [data-theme="dark"] .text-ink{color:#e2e8f0 !important;}
+    [data-theme="dark"] .text-body{color:#94a3b8 !important;}
+    [data-theme="dark"] .border-line{border-color:#334155 !important;}
+    [data-theme="dark"] .border-line\/80{border-color:rgba(51,65,85,.8) !important;}
+    [data-theme="dark"] .border-line\/90{border-color:rgba(51,65,85,.9) !important;}
+    [data-theme="dark"] .shadow-sleek-sm{box-shadow:0 12px 28px -16px rgba(0,0,0,.4) !important;}
+    [data-theme="dark"] .nav-pill-bg{background:#0f172a !important;border-color:#334155 !important;}
+    [data-theme="dark"] .nav-pill-link{color:#94a3b8 !important;}
+    [data-theme="dark"] .nav-pill-link:hover{color:#e2e8f0 !important;}
+    [data-theme="dark"] .nav-pill-active{background:#1e293b !important;color:#e2e8f0 !important;}
+    [data-theme="dark"] .theme-toggle-btn{border-color:#334155;background:#1e293b;color:#e2e8f0;}
+    [data-theme="dark"] .hero-section{background:#0f172a !important;}
+    [data-theme="dark"] .hero-section .hero-gradient{background:linear-gradient(to bottom,#0f172a,rgba(15,23,42,.95),#0f172a) !important;}
+    [data-theme="dark"] .footer-section{background:#1e293b !important;border-color:#334155 !important;}
+    [data-theme="dark"] .mobile-link{color:#94a3b8 !important;}
+    [data-theme="dark"] .mobile-link:hover{background:#1e293b !important;}
+    [data-theme="dark"] .mobile-active{background:rgba(20,184,166,.1) !important;color:#5eead4 !important;}
+    [data-theme="dark"] .skill-bar{background:#1e293b !important;}
+    [data-theme="dark"] .tech-b{background:#1e293b !important;border-color:#334155 !important;}
+    [data-theme="dark"] .tool-card{background:#1e293b !important;border-color:#334155 !important;}
+    [data-theme="dark"] .tool-card svg{color:#475569 !important;}
+    ::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:#f0ede8;}::-webkit-scrollbar-thumb{background:#99f6e4;border-radius:99px;}*{scrollbar-width:thin;scrollbar-color:#99f6e4 #f0ede8;}
+    [data-theme="dark"]::-webkit-scrollbar-track{background:#1e293b;}[data-theme="dark"]::-webkit-scrollbar-thumb{background:#0d9488;}[data-theme="dark"]*{scrollbar-color:#0d9488 #1e293b;}
+    .brand-icon__img { overflow:hidden; border-radius:50%; display:grid; place-items:center; }
+    .brand-icon__img img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  </style>
+</head>
+<body class="bg-cloud text-ink font-sans antialiased selection:bg-brand/20">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 pt-3 sm:pt-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="w-full rounded-2xl border border-line/80 bg-white/95 backdrop-blur-xl shadow-sleek-sm">
+        <nav class="flex items-center justify-between gap-2 sm:gap-3 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 min-h-[4rem] sm:min-h-[4.25rem]">
+          <a href="index.html" class="flex items-center shrink-0 min-w-0 py-0.5 transition-opacity hover:opacity-90"><span class="inline-flex gap-2.5 sm:gap-3 items-center"><span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span><span class="inline-flex flex-col min-w-0 gap-0 items-start"><span class="brand-wordmark text-[1.35rem] sm:text-2xl"><span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span></span><span class="brand-tagline flex items-center gap-1.5"><span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span><span class="text-[9px] sm:text-[10px] font-medium tracking-[0.26em] text-deep lowercase leading-none">anthony maclean</span><span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span></span></span></span></a>
+          <div class="hidden md:flex items-center p-1 rounded-full bg-cloud border border-line/90 nav-pill-bg">
+            <a href="index.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm text-body hover:text-ink font-semibold">Home</a>
+            <a href="about.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm text-body hover:text-ink font-semibold">About</a>
+            <a href="skills.html" class="nav-pill-link nav-pill-active px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm bg-white text-ink shadow-sleek-sm font-extrabold" aria-current="page">Skills</a>
+            <a href="projects.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm text-body hover:text-ink font-semibold">Projects</a>
+            <a href="certificates.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm text-body hover:text-ink font-semibold">Certificates</a>
+            <a href="contact.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm text-body hover:text-ink font-semibold">Contact</a>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" data-theme-toggle class="theme-toggle-btn h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors shrink-0"><span data-theme-icon="sun" class="hidden"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg></span><span data-theme-icon="moon"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg></span></button>
+            <a href="https://wa.me/233209795146" target="_blank" class="cta-talk hidden sm:inline-flex items-center rounded-full bg-deep text-white px-4 py-2 text-xs sm:text-sm font-extrabold hover:bg-ink transition-colors"><span class="cta-talk__inner"><span>Let's talk</span><span class="cta-talk__arrow"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></span></a>
+            <button id="menuBtn" type="button" class="md:hidden h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg></button>
+          </div>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-line/80 px-4 sm:px-5 pb-3 pt-1">
+          <div class="grid grid-cols-2 gap-1.5">
+            <a href="index.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Home</a>
+            <a href="about.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">About</a>
+            <a href="skills.html" class="mobile-link mobile-active px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors bg-brand/10 text-brand" aria-current="page">Skills</a>
+            <a href="projects.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Projects</a>
+            <a href="certificates.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Certificates</a>
+            <a href="experience.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Experience</a>
+            <a href="testimonials.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Testimonials</a>
+            <a href="contact.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Contact</a>
+          </div>
+          <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="cta-talk mt-2 flex w-full items-center justify-center rounded-xl bg-deep text-white py-2.5 text-sm font-extrabold hover:bg-ink transition-colors"><span class="cta-talk__inner gap-2"><span>Let's talk</span><span class="cta-talk__arrow"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section relative overflow-hidden bg-white soft-grid border-b border-line">
+    <div class="hero-gradient absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-5 sm:pb-6">
+      <p class="reveal text-xs font-extrabold text-brand uppercase tracking-[0.2em]">Technical Skills</p>
+      <h1 class="reveal reveal-delay-1 mt-2 text-3xl sm:text-4xl lg:text-[2.65rem] font-heading font-semibold tracking-[-0.04em] leading-tight">My <span class="grad-text">Tech Stack</span> & Expertise</h1>
+      <p class="reveal reveal-delay-2 text-[0.9375rem] leading-relaxed mt-2.5 max-w-2xl text-body">The languages, frameworks, and tools I use daily to build production-ready software.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS CONTENT -->
+  <main>
+    <section class="py-12 sm:py-16 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Tech Badges -->
+        <div class="reveal flex flex-wrap justify-center gap-3 mb-16">
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-yellow-100 flex items-center justify-center text-yellow-700 text-xs font-bold">JS</div><span class="text-xs text-body font-medium">JavaScript</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center text-blue-700 text-xs font-bold">TS</div><span class="text-xs text-body font-medium">TypeScript</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-cyan-100 flex items-center justify-center text-cyan-700 text-xs font-bold">Re</div><span class="text-xs text-body font-medium">React</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-green-100 flex items-center justify-center text-green-700 text-xs font-bold">No</div><span class="text-xs text-body font-medium">Node.js</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center text-blue-800 text-xs font-bold">Py</div><span class="text-xs text-body font-medium">Python</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-orange-100 flex items-center justify-center text-orange-700 text-xs font-bold">Ht</div><span class="text-xs text-body font-medium">HTML/CSS</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-indigo-100 flex items-center justify-center text-indigo-700 text-xs font-bold">Tw</div><span class="text-xs text-body font-medium">Tailwind</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-green-100 flex items-center justify-center text-green-800 text-xs font-bold">Mb</div><span class="text-xs text-body font-medium">MongoDB</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center text-blue-600 text-xs font-bold">My</div><span class="text-xs text-body font-medium">MySQL</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-purple-100 flex items-center justify-center text-purple-700 text-xs font-bold">Ex</div><span class="text-xs text-body font-medium">Express.js</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-red-100 flex items-center justify-center text-red-700 text-xs font-bold">Ng</div><span class="text-xs text-body font-medium">Next.js</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold">Gi</div><span class="text-xs text-body font-medium">Git</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-pink-100 flex items-center justify-center text-pink-700 text-xs font-bold">Fg</div><span class="text-xs text-body font-medium">Figma</span></div>
+          <div class="tech-b flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-brand/15 cursor-default shadow-sm"><div class="w-6 h-6 rounded-md bg-indigo-100 flex items-center justify-center text-indigo-600 text-xs font-bold">Ph</div><span class="text-xs text-body font-medium">PHP</span></div>
+        </div>
+
+        <!-- Skill Bars -->
+        <div class="reveal grid md:grid-cols-2 gap-x-16 gap-y-7 max-w-5xl mx-auto mb-20">
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">JavaScript / TypeScript</span><span class="text-xs text-brand font-mono font-bold">90%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:90%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">React / Next.js</span><span class="text-xs text-brand font-mono font-bold">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:85%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">Node.js / Express.js</span><span class="text-xs text-brand font-mono font-bold">82%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:82%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">Python</span><span class="text-xs text-brand font-mono font-bold">75%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:75%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">Database Design (SQL/NoSQL)</span><span class="text-xs text-brand font-mono font-bold">80%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:80%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">UI/UX & Tailwind CSS</span><span class="text-xs text-brand font-mono font-bold">88%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:88%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">PHP / Laravel</span><span class="text-xs text-brand font-mono font-bold">70%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:70%"></div></div></div>
+          <div><div class="flex justify-between items-center mb-2.5"><span class="text-sm text-ink font-medium">Git / Version Control</span><span class="text-xs text-brand font-mono font-bold">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" style="--fw:85%"></div></div></div>
+        </div>
+
+        <!-- Tools -->
+        <div class="reveal text-center mb-10">
+          <h3 class="font-heading font-medium text-xl text-body mb-8">Tools & Platforms I Use Daily</h3>
+          <div class="flex flex-wrap justify-center gap-5">
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/></svg></div><span class="text-[10px] text-body font-semibold">VS Code</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S18.885 2.25 13.5 2.25zm-2.25 12.75-3-3m0 0-3 3m3-3v6m9-6-3-3m0 0-3 3m3-3v6"/></svg></div><span class="text-[10px] text-body font-semibold">GitHub</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg></div><span class="text-[10px] text-body font-semibold">Figma</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/></svg></div><span class="text-[10px] text-body font-semibold">Firebase</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-2.25-1.313M21 7.5v2.25m0-2.25l-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3l2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75l2.25-1.313M12 21.75V19.5m0 2.25l-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"/></svg></div><span class="text-[10px] text-body font-semibold">Docker</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg></div><span class="text-[10px] text-body font-semibold">Postman</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg></div><span class="text-[10px] text-body font-semibold">phpMyAdmin</span></div>
+            <div class="flex flex-col items-center gap-2 group"><div class="tool-card w-14 h-14 rounded-xl bg-white border border-line flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-brand/30 transition-all"><svg class="w-6 h-6 text-slate-300 group-hover:text-brand transition-colors" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg></div><span class="text-[10px] text-body font-semibold">Canva</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-section bg-white border-t border-line py-8 reveal">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <a href="index.html" class="shrink-0 transition-opacity hover:opacity-90"><span class="inline-flex gap-2.5 items-center"><span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span><span class="brand-wordmark text-[1.35rem]"><span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span></span></span></a>
+        <nav class="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-body"><a href="index.html" class="hover:text-ink transition-colors">Home</a><a href="about.html" class="hover:text-ink transition-colors">About</a><a href="skills.html" class="text-brand transition-colors">Skills</a><a href="projects.html" class="hover:text-ink transition-colors">Projects</a><a href="certificates.html" class="hover:text-ink transition-colors">Certificates</a><a href="experience.html" class="hover:text-ink transition-colors">Experience</a><a href="testimonials.html" class="hover:text-ink transition-colors">Testimonials</a><a href="contact.html" class="hover:text-ink transition-colors">Contact</a></nav>
+        <a href="https://wa.me/233209795146" target="_blank" class="inline-flex items-center gap-2 text-xs font-extrabold text-mint hover:text-ink transition-colors shrink-0"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg> WhatsApp</a>
+      </div>
+      <p class="mt-6 text-sm text-body text-center sm:text-left">© 2026 Anthony Maclean. All rights reserved.</p>
+    </div>
+  </footer>
+  <button type="button" id="backToTop" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white opacity-0 translate-y-4 transition-all duration-300 hover:shadow-lg cursor-pointer" style="pointer-events:none;"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75 12 9.75m0 0 7.5 7.5"/></svg></button>
+  <script>
+  (function(){'use strict';var k='maclean-dev-theme-mode',t=document.querySelector('[data-theme-toggle]'),s=document.querySelector('[data-theme-icon="sun"]'),m=document.querySelector('[data-theme-icon="moon"]');function a(v){document.documentElement.setAttribute('data-theme',v);if(s)s.classList.toggle('hidden',v!=='dark');if(m)m.classList.toggle('hidden',v==='dark');}var c=document.documentElement.getAttribute('data-theme')||'light';a(c);if(t){t.addEventListener('click',function(){var n=c==='light'?'dark':'light';c=n;try{localStorage.setItem(k,n);}catch(e){}a(n);});}var mb=document.getElementById('menuBtn'),mm=document.getElementById('mobileMenu');if(mb&&mm){mb.addEventListener('click',function(){var o=!mm.classList.contains('hidden');mm.classList.toggle('hidden',o);mb.setAttribute('aria-expanded',!o);});mm.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){mm.classList.add('hidden');mb.setAttribute('aria-expanded','false');});});}var r=document.querySelectorAll('.reveal'),ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('is-visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});r.forEach(function(el){ro.observe(el);});var sb=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('active');});},{threshold:.5});document.querySelectorAll('.skill-bar-fill').forEach(function(b){sb.observe(b);});var b=document.getElementById('backToTop');if(b){window.addEventListener('scroll',function(){if(window.scrollY>600){b.style.opacity='1';b.style.transform='translateY(0)';b.style.pointerEvents='auto';}else{b.style.opacity='0';b.style.transform='translateY(16px)';b.style.pointerEvents='none';}});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}})();
+  </script>
+</body>
+</html>

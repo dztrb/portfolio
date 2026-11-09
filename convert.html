@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Data URL Converter</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;background:#1e293b;color:#e2e8f0;padding:20px;box-sizing:border-box;">
+  <h2 style="margin-bottom:20px;text-align:center;">Drop your image below</h2>
+  <input type="file" id="file" accept="image/*" style="margin-bottom:20px;font-size:16px;max-width:100%;">
+  <textarea id="out" readonly style="width:100%;max-width:500px;height:200px;font-size:11px;font-family:monospace;resize:none;background:#0f172a;color:#5eead4;border:1px solid #334155;border-radius:12px;padding:12px;box-sizing:border-box;"></textarea>
+  <p style="margin-top:10px;font-size:13px;color:#64748b;">Copy the green text above and paste it after &lt;/title&gt; in your HTML files like this:</p>
+  <code style="margin-top:8px;display:block;background:#0f172a;color:#34d399;padding:12px;border-radius:8px;font-size:12px;border:1px solid #334155;word-break:break-all;">&lt;link rel="icon" href="PASTE HERE"&gt;</code>
+  <script>
+    document.getElementById('file').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        document.getElementById('out').value = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

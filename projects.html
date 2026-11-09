@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+  <title>Projects | MACLEAN.DEV</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <script>
+(function () {
+  var key = 'maclean-dev-theme-mode';
+  var theme = 'light';
+  try {
+    var mode = localStorage.getItem(key);
+    if (mode === 'dark') { theme = 'dark'; }
+  } catch (e) {}
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
+            brand: ['Space Grotesk', 'DM Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            ink: '#1e293b',
+            body: '#64748b',
+            line: '#e2e8f0',
+            cloud: '#faf9f6',
+            brand: '#14b8a6',
+            accent: '#f97316',
+            deep: '#0f172a',
+            mint: '#10b981',
+          },
+          boxShadow: {
+            sleek: '0 24px 48px -28px rgba(15, 23, 42, 0.28)',
+            'sleek-sm': '0 12px 28px -16px rgba(15, 23, 42, 0.18)',
+          }
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .soft-grid {
+        background-image: linear-gradient(rgba(20,184,166,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.04) 1px, transparent 1px);
+        background-size: 44px 44px;
+      }
+      [data-theme="dark"] .soft-grid {
+        background-image: linear-gradient(rgba(20,184,166,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.06) 1px, transparent 1px);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translate3d(0, 28px, 0);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+      .reveal-fade { transform: none; }
+      .reveal-scale { transform: translate3d(0, 12px, 0) scale(0.97); }
+      .reveal-scale.is-visible { transform: translate3d(0, 0, 0) scale(1); }
+      .reveal-left { transform: translate3d(-24px, 0, 0); }
+      .reveal-right { transform: translate3d(24px, 0, 0); }
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.18s; }
+      .reveal-delay-3 { transition-delay: 0.26s; }
+      .reveal-delay-4 { transition-delay: 0.34s; }
+      .reveal-delay-5 { transition-delay: 0.42s; }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
+      }
+      .brand-icon {
+        --brand-icon-size: 2.75rem;
+        width: var(--brand-icon-size);
+        height: var(--brand-icon-size);
+        border-radius: 50%;
+        flex-shrink: 0;
+        background: conic-gradient(from 0deg, transparent 0deg 22deg, #14b8a6 22deg 158deg, transparent 158deg 202deg, #f97316 202deg 338deg, transparent 338deg 360deg);
+        display: grid;
+        place-items: center;
+        padding: 3px;
+      }
+      .brand-icon--lg { --brand-icon-size: 3.25rem; padding: 3.5px; }
+      .brand-icon__inner {
+        width: 100%; height: 100%; border-radius: 50%;
+        display: grid; place-items: center;
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700; font-size: 0.72rem;
+        letter-spacing: -0.03em; color: #0f172a;
+        background: #fff;
+      }
+      .brand-icon__img { overflow:hidden; border-radius:50%; display:grid; place-items:center; }
+      .brand-icon__img img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+      [data-theme="dark"] .brand-icon__inner { background: #1e293b; color: #e2e8f0; }
+      .brand-tagline { margin-top: 0.125rem; line-height: 1; }
+      .brand-wordmark {
+        font-family: 'Space Grotesk', 'DM Sans', sans-serif;
+        font-weight: 600; letter-spacing: -0.02em; line-height: 0.92;
+      }
+      .brand-wordmark .brand-name { font-weight: 600; }
+      .brand-wordmark .brand-suffix { font-weight: 700; }
+      .cta-talk {
+        position: relative; overflow: hidden; isolation: isolate;
+        animation: cta-talk-pulse 2.6s ease-in-out infinite;
+      }
+      .cta-talk::after {
+        content: ''; position: absolute; inset: 0; z-index: 0;
+        background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.14) 50%, transparent 62%);
+        transform: translateX(-120%); animation: cta-talk-shine 3.2s ease-in-out infinite; pointer-events: none;
+      }
+      .cta-talk__inner { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.375rem; }
+      .cta-talk__arrow { display: inline-flex; animation: cta-talk-arrow 1.35s ease-in-out infinite; }
+      @keyframes cta-talk-pulse {
+        0%,100% { box-shadow: 0 0 0 0 rgba(20,184,166,0); }
+        50% { box-shadow: 0 0 0 3px rgba(20,184,166,0.22); }
+      }
+      @keyframes cta-talk-shine {
+        0%,72%,100% { transform: translateX(-120%); }
+        28% { transform: translateX(120%); }
+      }
+      @keyframes cta-talk-arrow {
+        0%,100% { transform: translateX(0); }
+        50% { transform: translateX(4px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cta-talk, .cta-talk::after, .cta-talk__arrow { animation: none; }
+        .cta-talk:hover .cta-talk__arrow { transform: translateX(2px); }
+      }
+      html, body { overflow-x: clip; max-width: 100%; width: 100%; }
+header { position: -webkit-sticky !important; position: sticky !important; top: 0 !important; z-index: 50 !important; }
+[data-theme="dark"] header .bg-white\/95 { background: rgba(30, 41, 59, 0.95) !important; }
+      @media (max-width: 400px) {
+        .brand-icon { --brand-icon-size: 2.3rem !important; }
+        .brand-wordmark { font-size: 1.18rem !important; }
+        .brand-tagline { font-size: 8px !important; }
+      }
+    }
+  </style>
+  <style>
+    /* Work Process */
+    .work-process { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    @media (max-width: 768px) { .work-process { grid-template-columns: 1fr; gap: 2rem; } }
+    .work-process__eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: #14b8a6; margin-bottom: 0.75rem; }
+    [data-theme="dark"] .work-process__eyebrow { color: #5eead4; }
+    .work-process__title { font-family: 'Space Grotesk', sans-serif; font-size: 1.625rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.03em; color: #1e293b; margin-bottom: 1rem; }
+    @media (min-width: 640px) { .work-process__title { font-size: 1.875rem; } }
+    [data-theme="dark"] .work-process__title { color: #f1f5f9; }
+    .work-process__lead { font-size: 0.875rem; line-height: 1.7; color: #64748b; margin-bottom: 2rem; }
+    [data-theme="dark"] .work-process__lead { color: #94a3b8; }
+    .work-process__steps { list-style: none; padding: 0; margin: 0; }
+    .work-process__step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+    .work-process__step:last-child { margin-bottom: 0; }
+    .work-process__step-num {
+      flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+      display: grid; place-items: center; font-weight: 700; font-size: 0.8rem;
+      background: linear-gradient(135deg, #14b8a6, #0d9488); color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .work-process__step-title { font-weight: 700; font-size: 0.875rem; color: #1e293b; margin-bottom: 0.25rem; }
+    [data-theme="dark"] .work-process__step-title { color: #e2e8f0; }
+    .work-process__step-text { font-size: 0.8rem; line-height: 1.6; color: #64748b; }
+    [data-theme="dark"] .work-process__step-text { color: #94a3b8; }
+    .work-process__cta {
+      display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem;
+      font-size: 0.8125rem; font-weight: 700; color: #14b8a6;
+      transition: gap 0.2s ease;
+    }
+    .work-process__cta:hover { gap: 0.75rem; }
+    [data-theme="dark"] .work-process__cta { color: #5eead4; }
+    .work-process__visual { position: relative; border-radius: 1.25rem; overflow: hidden; }
+    .work-process__img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 1.25rem; }
+    @media (max-width: 768px) { .work-process__visual { max-height: 360px; } .work-process__img { max-height: 360px; } }
+
+    /* Dark mode overrides */
+    [data-theme="dark"] body { background: #0f172a; color: #e2e8f0; }
+    [data-theme="dark"] .bg-white { background: #1e293b !important; }
+    [data-theme="dark"] .bg-cloud { background: #0f172a !important; }
+    [data-theme="dark"] .bg-\[\#fafbfc\] { background: #0f172a !important; }
+    [data-theme="dark"] .text-ink { color: #e2e8f0 !important; }
+    [data-theme="dark"] .text-body { color: #94a3b8 !important; }
+    [data-theme="dark"] .border-line { border-color: #334155 !important; }
+    [data-theme="dark"] .border-line\/80 { border-color: rgba(51,65,85,0.8) !important; }
+    [data-theme="dark"] .border-line\/90 { border-color: rgba(51,65,85,0.9) !important; }
+    [data-theme="dark"] .selection\:bg-brand\/20::selection { background: rgba(20,184,166,0.2); }
+    [data-theme="dark"] .shadow-sleek-sm { box-shadow: 0 12px 28px -16px rgba(0,0,0,0.4) !important; }
+    [data-theme="dark"] .shadow-sleek { box-shadow: 0 24px 48px -28px rgba(0,0,0,0.5) !important; }
+
+    /* Nav pill in dark */
+    [data-theme="dark"] .nav-pill-bg { background: #0f172a !important; border-color: #334155 !important; }
+    [data-theme="dark"] .nav-pill-link { color: #94a3b8 !important; }
+    [data-theme="dark"] .nav-pill-link:hover { color: #e2e8f0 !important; }
+    [data-theme="dark"] .nav-pill-active { background: #1e293b !important; color: #e2e8f0 !important; }
+
+    /* Theme toggle in dark */
+    [data-theme="dark"] .theme-toggle-btn { border-color: #334155; background: #1e293b; color: #e2e8f0; }
+
+    /* Card dark */
+    [data-theme="dark"] .project-card { background: #1e293b !important; border-color: #334155 !important; }
+    [data-theme="dark"] .project-card .card-title { color: #f1f5f9 !important; }
+    [data-theme="dark"] .project-card .card-desc { color: #94a3b8 !important; }
+
+    /* Hero gradient in dark */
+    [data-theme="dark"] .hero-section { background: #0f172a !important; }
+    [data-theme="dark"] .hero-section .hero-gradient { background: linear-gradient(to bottom, #0f172a, rgba(15,23,42,0.95), #0f172a) !important; }
+
+    /* Footer dark */
+    [data-theme="dark"] .footer-section { background: #1e293b !important; border-color: #334155 !important; }
+
+    /* Mobile menu dark */
+    [data-theme="dark"] .mobile-link { color: #94a3b8 !important; }
+    [data-theme="dark"] .mobile-link:hover { background: #1e293b !important; }
+    [data-theme="dark"] .mobile-active { background: rgba(20,184,166,0.1) !important; color: #5eead4 !important; }
+
+    /* Tech pill dark */
+    [data-theme="dark"] .tech-pill { background: rgba(20,184,166,0.08) !important; color: #5eead4 !important; border-color: rgba(20,184,166,0.15) !important; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #f0ede8; }
+    ::-webkit-scrollbar-thumb { background: #99f6e4; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
+    * { scrollbar-width: thin; scrollbar-color: #99f6e4 #f0ede8; }
+    [data-theme="dark"] ::-webkit-scrollbar-track { background: #1e293b; }
+    [data-theme="dark"] ::-webkit-scrollbar-thumb { background: #0d9488; }
+    [data-theme="dark"] * { scrollbar-color: #0d9488 #1e293b; }
+    .brand-icon__img { overflow:hidden; border-radius:50%; display:grid; place-items:center; }
+    .brand-icon__img img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  </style>
+  <meta name="description" content="Software projects by Anthony Maclean - Mannequin Sales System, Rent & Hotel Management, Attendance System, E-Commerce Platform, ACCOMODATION FINDER and more." />
+  <meta name="author" content="Anthony Maclean" />
+  <meta property="og:title" content="Projects | MACLEAN.DEV" />
+  <meta property="og:description" content="Software projects by Anthony Maclean - Mannequin Sales System, Rent & Hotel Management, Attendance System and more." />
+  <meta property="og:type" content="website" />
+</head>
+<body class="bg-cloud text-ink font-sans antialiased selection:bg-brand/20">
+
+  <!-- ===== HEADER ===== -->
+  <header class="sticky top-0 z-50 pt-3 sm:pt-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="w-full rounded-2xl border border-line/80 bg-white/95 backdrop-blur-xl shadow-sleek-sm">
+        <nav class="flex items-center justify-between gap-2 sm:gap-3 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 min-h-[4rem] sm:min-h-[4.25rem]" aria-label="Main">
+          <!-- Brand -->
+          <a href="index.html" class="flex items-center shrink-0 min-w-0 py-0.5 transition-opacity hover:opacity-90" aria-label="MACLEAN.DEV home">
+            <span class="inline-flex gap-2.5 sm:gap-3 items-center">
+              <span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span>
+              </span>
+              <span class="inline-flex flex-col min-w-0 gap-0 items-start">
+                <span class="brand-wordmark text-[1.35rem] sm:text-2xl lg:text-[1.85rem]" aria-hidden="true">
+                  <span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span>
+                </span>
+                <span class="brand-tagline flex items-center gap-1.5" aria-hidden="true">
+                  <span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span>
+                  <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.26em] text-deep lowercase leading-none">anthony maclean</span>
+                  <span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span>
+                </span>
+              </span>
+              <span class="sr-only">MACLEAN.DEV - Anthony Maclean</span>
+            </span>
+          </a>
+
+          <!-- Desktop Nav -->
+          <div class="hidden md:flex items-center p-1 rounded-full bg-cloud border border-line/90 nav-pill-bg">
+            <a href="index.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Home</a>
+            <a href="about.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">About</a>
+            <a href="skills.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Skills</a>
+            <a href="projects.html" class="nav-pill-link nav-pill-active px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 bg-white text-ink shadow-sleek-sm font-extrabold" aria-current="page">Projects</a>
+            <a href="certificates.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Certificates</a>
+            <a href="contact.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Contact</a>
+          </div>
+
+          <!-- Right Side -->
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" data-theme-toggle class="theme-toggle-btn h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors shrink-0" aria-pressed="false" aria-label="Switch theme" title="Switch theme">
+              <span data-theme-icon="sun" class="hidden">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+              </span>
+              <span data-theme-icon="moon">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+              </span>
+            </button>
+            <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="cta-talk hidden sm:inline-flex items-center rounded-full bg-deep text-white px-4 py-2 text-xs sm:text-sm font-extrabold hover:bg-ink transition-colors">
+              <span class="cta-talk__inner">
+                <span>Let's talk</span>
+                <span class="cta-talk__arrow"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span>
+              </span>
+            </a>
+            <button id="menuBtn" type="button" class="md:hidden h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors" aria-label="Open menu" aria-expanded="false">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-line/80 px-4 sm:px-5 pb-3 pt-1">
+          <div class="grid grid-cols-2 gap-1.5">
+            <a href="index.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Home</a>
+            <a href="about.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">About</a>
+            <a href="skills.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Skills</a>
+            <a href="projects.html" class="mobile-link mobile-active px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors bg-brand/10 text-brand" aria-current="page">Projects</a>
+            <a href="certificates.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Certificates</a>
+            <a href="experience.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Experience</a>
+            <a href="testimonials.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Testimonials</a>
+            <a href="contact.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Contact</a>
+          </div>
+          <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="cta-talk mt-2 flex w-full items-center justify-center rounded-xl bg-deep text-white py-2.5 text-sm font-extrabold hover:bg-ink transition-colors">
+            <span class="cta-talk__inner gap-2">
+              <span>Let's talk</span>
+              <span class="cta-talk__arrow"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section relative overflow-hidden bg-white soft-grid border-b border-line">
+    <div class="hero-gradient absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-5 sm:pb-6">
+      <p class="reveal text-xs font-extrabold text-brand uppercase tracking-[0.2em]">Selected work</p>
+      <h1 class="reveal reveal-delay-1 mt-2 text-3xl sm:text-4xl lg:text-[2.65rem] font-heading font-semibold tracking-[-0.04em] leading-tight">Projects and systems I've built.</h1>
+      <p class="reveal reveal-delay-2 text-[0.9375rem] leading-relaxed mt-2.5 max-w-2xl text-body">Management systems, web applications, and digital solutions for businesses, campuses, and communities in Ghana.</p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="projects">
+    <section class="py-10 sm:py-12 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Work Process -->
+        <section class="work-process reveal mb-8 sm:mb-10" aria-labelledby="work-process-title">
+          <div class="work-process__copy">
+            <p class="work-process__eyebrow">How I work</p>
+            <h2 id="work-process-title" class="work-process__title">From problem to solution - practical, tested and delivered.</h2>
+            <p class="work-process__lead">Every project starts with understanding the real need. I design systems people can actually use, build them with clean code, and ship on time with room to grow.</p>
+            <ol class="work-process__steps">
+              <li class="work-process__step">
+                <span class="work-process__step-num">1</span>
+                <div>
+                  <p class="work-process__step-title">Understand the problem</p>
+                  <p class="work-process__step-text">Analyze business needs, user requirements, and technical constraints before any build starts.</p>
+                </div>
+              </li>
+              <li class="work-process__step">
+                <span class="work-process__step-num">2</span>
+                <div>
+                  <p class="work-process__step-title">Design & plan</p>
+                  <p class="work-process__step-text">UI/UX designs, database schemas, and system architecture - so you see direction early.</p>
+                </div>
+              </li>
+              <li class="work-process__step">
+                <span class="work-process__step-num">3</span>
+                <div>
+                  <p class="work-process__step-title">Build & iterate</p>
+                  <p class="work-process__step-text">Clean, scalable code with regular testing and feedback loops throughout development.</p>
+                </div>
+              </li>
+              <li class="work-process__step">
+                <span class="work-process__step-num">4</span>
+                <div>
+                  <p class="work-process__step-title">Deploy & support</p>
+                  <p class="work-process__step-text">Launch the solution, provide documentation, and offer ongoing maintenance when needed.</p>
+                </div>
+              </li>
+            </ol>
+            <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="work-process__cta">
+              Start a project <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+          <figure class="work-process__visual reveal reveal-right reveal-delay-2">
+            <img src="projects.jpg" alt="Anthony Maclean working on software projects - web development in Ghana" class="work-process__img" width="1024" height="1024" loading="lazy" decoding="async" />
+          </figure>
+        </section>
+
+        <!-- Project Cards Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <!-- Card 1: Mannequin Sales Management System -->
+          <article class="reveal reveal-scale reveal-delay-1 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-brand uppercase tracking-[0.18em]">Management System</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">Mannequin Sales Management</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">Comprehensive system for managing mannequin sales - inventory tracking, order processing, invoicing, and sales analytics.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-brand/5 text-[10px] font-bold text-brand border border-brand/10">React</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-brand/5 text-[10px] font-bold text-brand border border-brand/10">Node.js</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-brand/5 text-[10px] font-bold text-brand border border-brand/10">MongoDB</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-brand/5 text-[10px] font-bold text-brand border border-brand/10">Express</span>
+            </div>
+            <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-brand hover:gap-2 transition-all">View <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg></a>
+          </article>
+
+          <!-- Card 2: Rent & Hotel Management System -->
+          <article class="reveal reveal-scale reveal-delay-2 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-accent uppercase tracking-[0.18em]">Management System</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">Rent & Hotel Management</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">All-in-one platform for hotel bookings, room allocation, rent payments, tenant records, and financial reporting.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-accent/5 text-[10px] font-bold text-accent border border-accent/10">PHP</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-accent/5 text-[10px] font-bold text-accent border border-accent/10">MySQL</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-accent/5 text-[10px] font-bold text-accent border border-accent/10">Bootstrap</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-accent/5 text-[10px] font-bold text-accent border border-accent/10">jQuery</span>
+            </div>
+            <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-accent hover:gap-2 transition-all">View <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg></a>
+          </article>
+
+          <!-- Card 3: Attendance Management System -->
+          <article class="reveal reveal-scale reveal-delay-3 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-mint/10 text-mint">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-mint uppercase tracking-[0.18em]">Campus System</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">Attendance Management</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">Digital attendance tracking with QR code scanning, real-time reporting, leave management, and email notifications.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-mint/5 text-[10px] font-bold text-mint border border-mint/10">Python</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-mint/5 text-[10px] font-bold text-mint border border-mint/10">Flask</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-mint/5 text-[10px] font-bold text-mint border border-mint/10">SQLite</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-mint/5 text-[10px] font-bold text-mint border border-mint/10">QR Code</span>
+            </div>
+            <a href="https://attendsys-dev.vercel.app/login" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-mint hover:gap-2 transition-all">View <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg></a>
+          </article>
+
+          <!-- Card 4: Client Portfolio Websites -->
+          <article class="reveal reveal-scale reveal-delay-4 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m14.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-sky-500 uppercase tracking-[0.18em]">Web Design</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">Client Portfolio Websites</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">Multiple modern, responsive portfolio and business websites with stunning animations and optimized performance.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-sky-500/5 text-[10px] font-bold text-sky-500 border border-sky-500/10">HTML/CSS</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-sky-500/5 text-[10px] font-bold text-sky-500 border border-sky-500/10">JavaScript</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-sky-500/5 text-[10px] font-bold text-sky-500 border border-sky-500/10">Tailwind</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-sky-500/5 text-[10px] font-bold text-sky-500 border border-sky-500/10">GSAP</span>
+            </div>
+            <a href="#" class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-sky-500 hover:gap-2 transition-all">View <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg></a>
+          </article>
+
+          <!-- Card 5: Local E-Commerce Platform -->
+          <article class="reveal reveal-scale reveal-delay-5 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-amber-500 uppercase tracking-[0.18em]">E-Commerce</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">Local E-Commerce Platform</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">Ghana-focused e-commerce with MoMo payment integration, vendor management, order tracking, and delivery logistics.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-amber-500/5 text-[10px] font-bold text-amber-500 border border-amber-500/10">Next.js</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-amber-500/5 text-[10px] font-bold text-amber-500 border border-amber-500/10">TypeScript</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-amber-500/5 text-[10px] font-bold text-amber-500 border border-amber-500/10">Stripe</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-amber-500/5 text-[10px] font-bold text-amber-500 border border-amber-500/10">PostgreSQL</span>
+            </div>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-amber-500">Coming Soon</span>
+          </article>
+
+          <!-- Card 6: ACCOMODATION FINDER -->
+          <article class="reveal reveal-scale reveal-delay-1 project-card rounded-2xl bg-cloud border border-line p-5 sm:p-6 flex flex-col">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            </span>
+            <p class="mt-3 text-[10px] font-extrabold text-indigo-500 uppercase tracking-[0.18em]">Accommodation Platform</p>
+            <h3 class="card-title mt-1 text-lg font-heading font-semibold">ACCOMODATION FINDER</h3>
+            <p class="card-desc mt-2 text-xs text-body leading-relaxed flex-grow">The secure accommodation platform where your money stays safe until you physically confirm your room.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-indigo-500/5 text-[10px] font-bold text-indigo-500 border border-indigo-500/10">React</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-indigo-500/5 text-[10px] font-bold text-indigo-500 border border-indigo-500/10">Firebase</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-indigo-500/5 text-[10px] font-bold text-indigo-500 border border-indigo-500/10">Tailwind</span>
+              <span class="tech-pill px-2 py-0.5 rounded-md bg-indigo-500/5 text-[10px] font-bold text-indigo-500 border border-indigo-500/10">Auth</span>
+            </div>
+            <a href="https://accomodationfinder.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-indigo-500 hover:gap-2 transition-all">View <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg></a>
+          </article>
+
+        </div>
+
+        <!-- GitHub CTA -->
+        <div class="reveal text-center mt-14">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 rounded-full border border-brand/20 text-brand bg-white px-8 py-4 text-sm font-bold hover:border-brand/40 hover:bg-brand/5 hover:-translate-y-0.5 transition-all shadow-sm">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5M16.5 3h6m0 0v6m0-6L10.5 13.5"/></svg>
+            View All on GitHub
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contact" class="footer-section bg-white border-t border-line py-8 reveal">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <!-- Brand -->
+        <a href="index.html" class="shrink-0 transition-opacity hover:opacity-90" aria-label="MACLEAN.DEV home">
+          <span class="inline-flex gap-2.5 sm:gap-3 items-center">
+           <span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span>
+            <span class="inline-flex flex-col min-w-0 gap-0 items-start">
+              <span class="brand-wordmark text-[1.35rem] sm:text-2xl lg:text-[1.85rem]" aria-hidden="true">
+                <span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span>
+              </span>
+              <span class="brand-tagline flex items-center gap-1.5" aria-hidden="true">
+                <span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span>
+                <span class="text-[9px] sm:text-[10px] font-medium tracking-[0.26em] text-deep lowercase leading-none">anthony maclean</span>
+                <span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span>
+              </span>
+            </span>
+            <span class="sr-only">MACLEAN.DEV - Anthony Maclean</span>
+          </span>
+        </a>
+
+        <!-- Nav Links -->
+        <nav class="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-body" aria-label="Footer">
+          <a href="index.html" class="hover:text-ink transition-colors">Home</a>
+          <a href="about.html" class="hover:text-ink transition-colors">About</a>
+          <a href="skills.html" class="hover:text-ink transition-colors">Skills</a>
+          <a href="projects.html" class="text-brand transition-colors" aria-current="page">Projects</a>
+          <a href="certificates.html" class="hover:text-ink transition-colors">Certificates</a>
+          <a href="experience.html" class="hover:text-ink transition-colors">Experience</a>
+          <a href="testimonials.html" class="hover:text-ink transition-colors">Testimonials</a>
+          <a href="contact.html" class="hover:text-ink transition-colors">Contact</a>
+        </nav>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-extrabold text-mint hover:text-ink transition-colors shrink-0">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg> WhatsApp
+        </a>
+      </div>
+
+      <!-- Contact Row -->
+      <div class="mt-6 grid sm:grid-cols-3 gap-4">
+        <a href="mailto:anthonymaclean100@gmail.com" class="flex items-center gap-3 text-xs text-body hover:text-brand transition-colors">
+          <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          anthonymaclean100@gmail.com
+        </a>
+        <a href="tel:+233209795146" class="flex items-center gap-3 text-xs text-body hover:text-brand transition-colors">
+          <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          020 979 5146
+        </a>
+        <span class="flex items-center gap-3 text-xs text-body">
+          <svg class="w-4 h-4 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          Takoradi / Accra, Ghana
+        </span>
+      </div>
+
+      <!-- Social Links -->
+      <div class="mt-6 flex items-center gap-3 flex-wrap">
+        <a href="https://www.instagram.com/dztrbmclean_" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-brand hover:border-brand/30 hover:-translate-y-0.5 transition-all" title="Instagram">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-mint hover:border-mint/30 hover:-translate-y-0.5 transition-all" title="WhatsApp">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg>
+        </a>
+        <a href="https://youtube.com/@nipawoplanss?si=eVjITyC5I3YtvxtY" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-red-500 hover:border-red-500/30 hover:-translate-y-0.5 transition-all" title="YouTube">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://x.com/dhisturb_sdw" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-sky-500 hover:border-sky-500/30 hover:-translate-y-0.5 transition-all" title="X / Twitter">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M20 4l-6.768 6.768"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/anthony-maclean-0b56363b3" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-blue-600 hover:border-blue-600/30 hover:-translate-y-0.5 transition-all" title="LinkedIn">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://snapchat.com/t/eCJPQ4hI" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-yellow-400 hover:border-yellow-400/30 hover:-translate-y-0.5 transition-all" title="Snapchat">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.5 2 6 4.5 6 8c0 2 .5 3.5 1 4.5 0 0-.5 1.5-3 2-.5.1-.5.5 0 .7 1 .3 2.5.3 3.5-.2.5.5 1.5 1 3 1s2.5-.5 3-1c1 .5 2.5.5 3.5.2.5-.2.5-.6 0-.7-2.5-.5-3-2-3-2 .5-1 1-2.5 1-4.5 0-3.5-2.5-6-6-6z"/></svg>
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-body text-center sm:text-left">© 2026 Anthony Maclean. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button type="button" id="backToTop" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white opacity-0 translate-y-4 transition-all duration-300 hover:shadow-lg hover:shadow-brand/30 cursor-pointer" style="pointer-events:none;" aria-label="Back to top" aria-hidden="true" tabindex="-1">
+    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75 12 9.75m0 0 7.5 7.5"/></svg>
+  </button>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+  (function() {
+    'use strict';
+
+    // ── Theme Toggle ──
+    var key = 'maclean-dev-theme-mode';
+    var toggle = document.querySelector('[data-theme-toggle]');
+    var sunIcon = document.querySelector('[data-theme-icon="sun"]');
+    var moonIcon = document.querySelector('[data-theme-icon="moon"]');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (sunIcon) sunIcon.classList.toggle('hidden', theme !== 'dark');
+      if (moonIcon) moonIcon.classList.toggle('hidden', theme === 'dark');
+      if (toggle) toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    }
+
+    // Init
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(current);
+
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        var next = current === 'light' ? 'dark' : 'light';
+        current = next;
+        try { localStorage.setItem(key, next); } catch(e) {}
+        applyTheme(next);
+      });
+    }
+
+    // ── Mobile Menu ──
+    var menuBtn = document.getElementById('menuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', function() {
+        var isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', isOpen);
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // ── Reveal on Scroll ──
+    var revealEls = document.querySelectorAll('.reveal');
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function(el) { revealObs.observe(el); });
+
+    // ── Back to Top ──
+    var btt = document.getElementById('backToTop');
+    if (btt) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) {
+          btt.style.opacity = '1';
+          btt.style.transform = 'translateY(0)';
+          btt.style.pointerEvents = 'auto';
+          btt.setAttribute('aria-hidden', 'false');
+          btt.removeAttribute('tabindex');
+        } else {
+          btt.style.opacity = '0';
+          btt.style.transform = 'translateY(16px)';
+          btt.style.pointerEvents = 'none';
+          btt.setAttribute('aria-hidden', 'true');
+          btt.setAttribute('tabindex', '-1');
+        }
+      });
+
+      btt.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ── Smooth Scroll for Anchor Links ──
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        if (href && href.length > 1) {
+          var target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            var offset = 100;
+            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+  })();
+  </script>
+</body>
+</html>

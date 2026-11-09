@@ -1,0 +1,7 @@
+# Archives & backups
+*.zip
+*.bak
+
+# OS metadata
+.DS_Store
+Thumbs.db

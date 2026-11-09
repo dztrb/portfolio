@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+  <title>About | MACLEAN.DEV</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <script>
+(function(){var k='maclean-dev-theme-mode',t='light';try{var m=localStorage.getItem(k);if(m==='dark')t='dark';}catch(e){}document.documentElement.setAttribute('data-theme',t);})();
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],heading:['Space Grotesk','sans-serif'],brand:['Space Grotesk','DM Sans','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{ink:'#1e293b',body:'#64748b',line:'#e2e8f0',cloud:'#faf9f6',brand:'#14b8a6',accent:'#f97316',deep:'#0f172a',mint:'#10b981'},boxShadow:{sleek:'0 24px 48px -28px rgba(15,23,42,0.28)','sleek-sm':'0 12px 28px -16px rgba(15,23,42,0.18)'}}}}
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .soft-grid{background-image:linear-gradient(rgba(20,184,166,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,0.04) 1px,transparent 1px);background-size:44px 44px;}
+      [data-theme="dark"] .soft-grid{background-image:linear-gradient(rgba(20,184,166,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,0.06) 1px,transparent 1px);}
+      .reveal{opacity:0;transform:translate3d(0,28px,0);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
+      .reveal.is-visible{opacity:1;transform:translate3d(0,0,0);}
+      .reveal-scale{transform:translate3d(0,12px,0) scale(.97);}
+      .reveal-scale.is-visible{transform:translate3d(0,0,0) scale(1);}
+      .reveal-left{transform:translate3d(-24px,0,0);}
+      .reveal-right{transform:translate3d(24px,0,0);}
+      .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.18s;}.reveal-delay-3{transition-delay:.26s;}.reveal-delay-4{transition-delay:.34s;}.reveal-delay-5{transition-delay:.42s;}
+      @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+      .brand-icon{--brand-icon-size:2.75rem;width:var(--brand-icon-size);height:var(--brand-icon-size);border-radius:50%;flex-shrink:0;background:conic-gradient(from 0deg,transparent 0deg 22deg,#14b8a6 22deg 158deg,transparent 158deg 202deg,#f97316 202deg 338deg,transparent 338deg 360deg);display:grid;place-items:center;padding:3px;}
+      .brand-icon__inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:-.03em;color:#0f172a;background:#fff;}
+      [data-theme="dark"] .brand-icon__inner{background:#1e293b;color:#e2e8f0;}
+      .brand-tagline{margin-top:.125rem;line-height:1;}
+      .brand-wordmark{font-family:'Space Grotesk','DM Sans',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:.92;}
+      .brand-wordmark .brand-name{font-weight:600;}.brand-wordmark .brand-suffix{font-weight:700;}
+      .cta-talk{position:relative;overflow:hidden;isolation:isolate;animation:cta-talk-pulse 2.6s ease-in-out infinite;}
+      .cta-talk::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.14) 50%,transparent 62%);transform:translateX(-120%);animation:cta-talk-shine 3.2s ease-in-out infinite;pointer-events:none;}
+      .cta-talk__inner{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.375rem;}
+      .cta-talk__arrow{display:inline-flex;animation:cta-talk-arrow 1.35s ease-in-out infinite;}
+      @keyframes cta-talk-pulse{0%,100%{box-shadow:0 0 0 0 rgba(20,184,166,0);}50%{box-shadow:0 0 0 3px rgba(20,184,166,.22);}}
+      @keyframes cta-talk-shine{0%,72%,100%{transform:translateX(-120%);}28%{transform:translateX(120%);}}
+      @keyframes cta-talk-arrow{0%,100%{transform:translateX(0);}50%{transform:translateX(4px);}}
+      html, body { overflow-x: clip; max-width: 100%; width: 100%; }
+header { position: -webkit-sticky !important; position: sticky !important; top: 0 !important; z-index: 50 !important; }
+[data-theme="dark"] header .bg-white\/95 { background: rgba(30, 41, 59, 0.95) !important; }
+      @media (max-width: 400px) {
+        .brand-icon { --brand-icon-size: 2.3rem !important; }
+        .brand-wordmark { font-size: 1.18rem !important; }
+        .brand-tagline { font-size: 8px !important; }
+      }
+      @media(prefers-reduced-motion:reduce){.cta-talk,.cta-talk::after,.cta-talk__arrow{animation:none;}}
+    }
+  </style>
+  <style>
+    @keyframes gradShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+    .grad-text{background:linear-gradient(135deg,#0d9488,#14b8a6,#f97316);background-size:200% 200%;animation:gradShift 4s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .code-block{background:#0f172a;border-radius:16px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;}
+    .code-block .code-header{background:#1e293b;padding:12px 16px;display:flex;align-items:center;gap:8px;}
+    .code-block .code-dot{width:10px;height:10px;border-radius:50%;}
+    .code-block .code-body{padding:20px 24px;color:#e2e8f0;overflow-x:auto;}
+    .code-block .ck{color:#c084fc;}.code-block .cs{color:#34d399;}.code-block .cv{color:#f9a8d4;}.code-block .cn{color:#67e8f9;}.code-block .cp{color:#94a3b8;}
+    .info-chip{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:14px;background:#fff;border:1px solid rgba(20,184,166,.07);transition:all .3s;}
+    .info-chip:hover{border-color:rgba(20,184,166,.15);box-shadow:0 4px 20px rgba(20,184,166,.06);}
+    .about-img{border-radius:24px;overflow:hidden;}
+    .about-img img{object-position:center top !important;transition:transform .8s cubic-bezier(.25,.46,.45,.94);}
+    .about-img:hover img{transform:scale(1.03);}
+    [data-theme="dark"] body{background:#0f172a;color:#e2e8f0;}
+    [data-theme="dark"] .bg-white{background:#1e293b !important;}
+    [data-theme="dark"] .bg-cloud{background:#0f172a !important;}
+    [data-theme="dark"] .text-ink{color:#e2e8f0 !important;}
+    [data-theme="dark"] .text-body{color:#94a3b8 !important;}
+    [data-theme="dark"] .border-line{border-color:#334155 !important;}
+    [data-theme="dark"] .border-line\/80{border-color:rgba(51,65,85,.8) !important;}
+    [data-theme="dark"] .border-line\/90{border-color:rgba(51,65,85,.9) !important;}
+    [data-theme="dark"] .shadow-sleek-sm{box-shadow:0 12px 28px -16px rgba(0,0,0,.4) !important;}
+    [data-theme="dark"] .nav-pill-bg{background:#0f172a !important;border-color:#334155 !important;}
+    [data-theme="dark"] .nav-pill-link{color:#94a3b8 !important;}
+    [data-theme="dark"] .nav-pill-link:hover{color:#e2e8f0 !important;}
+    [data-theme="dark"] .nav-pill-active{background:#1e293b !important;color:#e2e8f0 !important;}
+    [data-theme="dark"] .theme-toggle-btn{border-color:#334155;background:#1e293b;color:#e2e8f0;}
+    [data-theme="dark"] .hero-section{background:#0f172a !important;}
+    [data-theme="dark"] .hero-section .hero-gradient{background:linear-gradient(to bottom,#0f172a,rgba(15,23,42,.95),#0f172a) !important;}
+    [data-theme="dark"] .footer-section{background:#1e293b !important;border-color:#334155 !important;}
+    [data-theme="dark"] .mobile-link{color:#94a3b8 !important;}
+    [data-theme="dark"] .mobile-link:hover{background:#1e293b !important;}
+    [data-theme="dark"] .mobile-active{background:rgba(20,184,166,.1) !important;color:#5eead4 !important;}
+    [data-theme="dark"] .info-chip{background:#1e293b !important;border-color:#334155 !important;}
+    [data-theme="dark"] .info-chip:hover{border-color:rgba(20,184,166,.2) !important;}
+    ::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:#f0ede8;}::-webkit-scrollbar-thumb{background:#99f6e4;border-radius:99px;}::-webkit-scrollbar-thumb:hover{background:#14b8a6;}
+    *{scrollbar-width:thin;scrollbar-color:#99f6e4 #f0ede8;}
+    [data-theme="dark"]::-webkit-scrollbar-track{background:#1e293b;}[data-theme="dark"]::-webkit-scrollbar-thumb{background:#0d9488;}[data-theme="dark"]*{scrollbar-color:#0d9488 #1e293b;}
+    .brand-icon__img { overflow:hidden; border-radius:50%; display:grid; place-items:center; }
+.brand-icon__img img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  </style>
+</head>
+<body class="bg-cloud text-ink font-sans antialiased selection:bg-brand/20">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 pt-3 sm:pt-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="w-full rounded-2xl border border-line/80 bg-white/95 backdrop-blur-xl shadow-sleek-sm">
+        <nav class="flex items-center justify-between gap-2 sm:gap-3 px-4 sm:px-5 lg:px-6 py-2.5 sm:py-3 min-h-[4rem] sm:min-h-[4.25rem]" aria-label="Main">
+          <a href="index.html" class="flex items-center shrink-0 min-w-0 py-0.5 transition-opacity hover:opacity-90"><span class="inline-flex gap-2.5 sm:gap-3 items-center"><span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span><span class="inline-flex flex-col min-w-0 gap-0 items-start"><span class="brand-wordmark text-[1.35rem] sm:text-2xl lg:text-[1.85rem]"><span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span></span><span class="brand-tagline flex items-center gap-1.5"><span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span><span class="text-[9px] sm:text-[10px] font-medium tracking-[0.26em] text-deep lowercase leading-none">anthony maclean</span><span class="h-px w-4 sm:w-5 bg-brand shrink-0"></span></span></span></span></a>
+          <div class="hidden md:flex items-center p-1 rounded-full bg-cloud border border-line/90 nav-pill-bg">
+            <a href="index.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Home</a>
+            <a href="about.html" class="nav-pill-link nav-pill-active px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 bg-white text-ink shadow-sleek-sm font-extrabold" aria-current="page">About</a>
+            <a href="skills.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Skills</a>
+            <a href="projects.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Projects</a>
+            <a href="certificates.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Certificates</a>
+            <a href="contact.html" class="nav-pill-link px-3.5 lg:px-4 py-2 rounded-full text-xs lg:text-sm transition-all duration-200 text-body hover:text-ink font-semibold">Contact</a>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" data-theme-toggle class="theme-toggle-btn h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors shrink-0" aria-pressed="false"><span data-theme-icon="sun" class="hidden"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg></span><span data-theme-icon="moon"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg></span></button>
+            <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="cta-talk hidden sm:inline-flex items-center rounded-full bg-deep text-white px-4 py-2 text-xs sm:text-sm font-extrabold hover:bg-ink transition-colors"><span class="cta-talk__inner"><span>Let's talk</span><span class="cta-talk__arrow"><svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></span></a>
+            <button id="menuBtn" type="button" class="md:hidden h-10 w-10 rounded-xl border border-line bg-cloud grid place-items-center text-ink hover:border-ink transition-colors" aria-label="Open menu" aria-expanded="false"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg></button>
+          </div>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-line/80 px-4 sm:px-5 pb-3 pt-1">
+          <div class="grid grid-cols-2 gap-1.5">
+            <a href="index.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Home</a>
+            <a href="about.html" class="mobile-link mobile-active px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors bg-brand/10 text-brand" aria-current="page">About</a>
+            <a href="skills.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Skills</a>
+            <a href="projects.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Projects</a>
+            <a href="certificates.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Certificates</a>
+            <a href="experience.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Experience</a>
+            <a href="testimonials.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Testimonials</a>
+            <a href="contact.html" class="mobile-link px-3 py-2.5 rounded-xl text-sm font-bold text-center transition-colors text-body hover:bg-cloud">Contact</a>
+          </div>
+          <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="cta-talk mt-2 flex w-full items-center justify-center rounded-xl bg-deep text-white py-2.5 text-sm font-extrabold hover:bg-ink transition-colors"><span class="cta-talk__inner gap-2"><span>Let's talk</span><span class="cta-talk__arrow"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></span></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section relative overflow-hidden bg-white soft-grid border-b border-line">
+    <div class="hero-gradient absolute inset-0 bg-gradient-to-b from-white via-white/95 to-white"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-5 sm:pb-6">
+      <p class="reveal text-xs font-extrabold text-brand uppercase tracking-[0.2em]">Get to know me</p>
+      <h1 class="reveal reveal-delay-1 mt-2 text-3xl sm:text-4xl lg:text-[2.65rem] font-heading font-semibold tracking-[-0.04em] leading-tight">Turning ideas into <span class="grad-text">real-world software</span>.</h1>
+      <p class="reveal reveal-delay-2 text-[0.9375rem] leading-relaxed mt-2.5 max-w-2xl text-body">Software Engineering student, problem solver, and communicator - based in Ghana, working for the world.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT CONTENT -->
+  <main>
+    <section class="py-12 sm:py-16 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal flex flex-col lg:flex-row items-stretch gap-12 lg:gap-16">
+          <!-- Image -->
+          <div class="w-full lg:w-[45%] flex-shrink-0">
+            <div class="about-img relative w-full overflow-hidden rounded-3xl shadow-sleek">
+              <img src="about.png?v=2" alt="Anthony Maclean" class="w-full h-auto block rounded-3xl" style="width: 100%; height: auto; display: block; object-fit: contain;">
+            </div>
+          </div>
+          <!-- Content -->
+          <div class="w-full lg:w-[55%] flex flex-col justify-center">
+            <p class="reveal text-sm text-body leading-[1.8] mb-5">
+              I'm <strong class="text-ink font-semibold">Anthony Maclean</strong>, a dedicated Software Engineering student in the Computer Science Department at <strong class="text-ink font-semibold">Takoradi Technical University</strong>, Ghana. I specialize in building practical software that solves real problems. I am also a Software Engineer at BLAZONES.
+            </p>
+            <p class="reveal reveal-delay-1 text-sm text-body leading-[1.8] mb-5">
+              My journey started with curiosity about how technology transforms businesses. Since then, I've designed and developed multiple management systems - from sales tracking platforms for retail businesses to comprehensive hotel and rent management solutions.
+            </p>
+            <p class="reveal reveal-delay-2 text-sm text-body leading-[1.8] mb-10">
+              Beyond code, I'm recognized as a <strong class="text-ink font-semibold">Best Media Personality</strong> - a testament to my communication skills. I believe great software requires both technical excellence and the ability to understand people.
+            </p>
+
+            <!-- Code Block -->
+            <div class="reveal reveal-delay-3 code-block mb-10 shadow-xl">
+              <div class="code-header">
+                <div class="code-dot" style="background:#ef4444;"></div>
+                <div class="code-dot" style="background:#f59e0b;"></div>
+                <div class="code-dot" style="background:#22c55e;"></div>
+                <span class="text-xs text-slate-500 ml-2 font-mono">developer.js</span>
+              </div>
+              <div class="code-body">
+                <div><span class="ck">const</span> <span class="cv">developer</span> <span class="cp">=</span> <span class="cp">{</span></div>
+                <div class="pl-6"><span class="cn">name</span><span class="cp">:</span> <span class="cs">"ANTHONY MACLEAN"</span><span class="cp">,</span></div>
+                <div class="pl-6"><span class="cn">location</span><span class="cp">:</span> <span class="cs">"ACCRA/TAKORADI, GHANA"</span><span class="cp">,</span></div>
+                <div class="pl-6"><span class="cn">role</span><span class="cp">:</span> <span class="cs">"SOFTWARE ENGINEER"</span><span class="cp">,</span></div>
+                <div class="pl-6"><span class="cn">university</span><span class="cp">:</span> <span class="cs">"TAKORADI TECHNICAL UNIVERSITY"</span><span class="cp">,</span></div>
+                <div class="pl-6"><span class="cn">passion</span><span class="cp">:</span> <span class="cs">"BUILDING REAL-WORLD SOLUTIONS"</span><span class="cp">,</span></div>
+                <div class="pl-6"><span class="cn">available</span><span class="cp">:</span> <span class="ck">TRUE</span></div>
+                <div><span class="cp">}</span><span class="cp">;</span></div>
+              </div>
+            </div>
+
+            <!-- Info Chips -->
+            <div class="reveal reveal-delay-4 grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L12 12.75 6.429 9.75m11.142 0-4.179 2.25m0 0 4.179 2.25M12 12.75l4.179-2.25m0 0L12 7.5l-4.179 2.25"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Skills</div><div class="text-xs text-ink font-semibold">Full-Stack Dev</div></div>
+              </div>
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-5.54 0"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Certificates</div><div class="text-xs text-ink font-semibold">IBM Digital Lit.</div></div>
+              </div>
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Location</div><div class="text-xs text-ink font-semibold">ACCRA, GH</div></div>
+              </div>
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Education</div><div class="text-xs text-ink font-semibold">B.Tech Info. Tech</div></div>
+              </div>
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Languages</div><div class="text-xs text-ink font-semibold">EN, FANTE, TWI , GA</div></div>
+              </div>
+              <div class="info-chip">
+                <div class="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-rose-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+                <div><div class="text-[10px] uppercase tracking-wider text-body/60 font-bold">Focus</div><div class="text-xs text-ink font-semibold">Software Eng.</div></div>
+              </div>
+            </div>
+
+            <a href="contact.html" class="reveal reveal-delay-5 group inline-flex items-center justify-center gap-3 rounded-full bg-deep text-white text-sm font-bold px-8 py-4 shadow-lg shadow-deep/20 hover:shadow-xl hover:-translate-y-0.5 transition-all w-full sm:w-auto text-center">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+              LET'S TALK
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-section bg-white border-t border-line py-8 reveal">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <a href="index.html" class="shrink-0 transition-opacity hover:opacity-90"><span class="inline-flex gap-2.5 items-center"><span class="brand-icon" aria-hidden="true"><span class="brand-icon__inner brand-icon__img"><img src="logo.png" alt="AM"></span></span><span class="brand-wordmark text-[1.35rem]"><span class="brand-name text-deep">MACLEAN</span><span class="brand-suffix text-brand">.DEV</span></span></span></a>
+        <nav class="flex flex-wrap gap-x-5 gap-y-2 text-xs font-bold text-body"><a href="index.html" class="hover:text-ink transition-colors">Home</a><a href="about.html" class="text-brand transition-colors">About</a><a href="skills.html" class="hover:text-ink transition-colors">Skills</a><a href="projects.html" class="hover:text-ink transition-colors">Projects</a><a href="certificates.html" class="hover:text-ink transition-colors">Certificates</a><a href="experience.html" class="hover:text-ink transition-colors">Experience</a><a href="testimonials.html" class="hover:text-ink transition-colors">Testimonials</a><a href="contact.html" class="hover:text-ink transition-colors">Contact</a></nav>
+        <a href="https://wa.me/233209795146" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-extrabold text-mint hover:text-ink transition-colors shrink-0"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg> WhatsApp</a>
+      </div>
+      <div class="mt-6 flex items-center gap-3 flex-wrap">
+        <a href="https://www.instagram.com/dztrbmclean_" target="_blank" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-brand hover:border-brand/30 hover:-translate-y-0.5 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://wa.me/233209795146" target="_blank" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-mint hover:border-mint/30 hover:-translate-y-0.5 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/></svg></a>
+        <a href="https://youtube.com/@nipawoplanss?si=eVjITyC5I3YtvxtY" target="_blank" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-red-500 hover:border-red-500/30 hover:-translate-y-0.5 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://x.com/dhisturb_sdw" target="_blank" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-sky-500 hover:border-sky-500/30 hover:-translate-y-0.5 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768M20 4l-6.768 6.768"/></svg></a>
+        <a href="https://www.linkedin.com/in/anthony-maclean-0b56363b3" target="_blank" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-blue-600 hover:border-blue-600/30 hover:-translate-y-0.5 transition-all"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://snapchat.com/t/eCJPQ4hI" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-cloud border border-line grid place-items-center text-body hover:text-yellow-400 hover:border-yellow-400/30 hover:-translate-y-0.5 transition-all" title="Snapchat"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.5 2 6 4.5 6 8c0 2 .5 3.5 1 4.5 0 0-.5 1.5-3 2-.5.1-.5.5 0 .7 1 .3 2.5.3 3.5-.2.5.5 1.5 1 3 1s2.5-.5 3-1c1 .5 2.5.5 3.5.2.5-.2.5-.6 0-.7-2.5-.5-3-2-3-2 .5-1 1-2.5 1-4.5 0-3.5-2.5-6-6-6z"/></svg></a>
+      </div>
+      <p class="mt-6 text-sm text-body text-center sm:text-left">© 2026 Anthony Maclean. All rights reserved.</p>
+    </div>
+  </footer>
+  <button type="button" id="backToTop" class="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-gradient-to-br from-brand to-accent flex items-center justify-center text-white opacity-0 translate-y-4 transition-all duration-300 hover:shadow-lg cursor-pointer" style="pointer-events:none;"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75 12 9.75m0 0 7.5 7.5"/></svg></button>
+  <script>
+  (function(){'use strict';var k='maclean-dev-theme-mode',t=document.querySelector('[data-theme-toggle]'),s=document.querySelector('[data-theme-icon="sun"]'),m=document.querySelector('[data-theme-icon="moon"]');function a(v){document.documentElement.setAttribute('data-theme',v);if(s)s.classList.toggle('hidden',v!=='dark');if(m)m.classList.toggle('hidden',v==='dark');if(t)t.setAttribute('aria-pressed',v==='dark'?'true':'false');}var c=document.documentElement.getAttribute('data-theme')||'light';a(c);if(t){t.addEventListener('click',function(){var n=c==='light'?'dark':'light';c=n;try{localStorage.setItem(k,n);}catch(e){}a(n);});}var mb=document.getElementById('menuBtn'),mm=document.getElementById('mobileMenu');if(mb&&mm){mb.addEventListener('click',function(){var o=!mm.classList.contains('hidden');mm.classList.toggle('hidden',o);mb.setAttribute('aria-expanded',!o);});mm.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){mm.classList.add('hidden');mb.setAttribute('aria-expanded','false');});});}var r=document.querySelectorAll('.reveal'),ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('is-visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});r.forEach(function(el){ro.observe(el);});var b=document.getElementById('backToTop');if(b){window.addEventListener('scroll',function(){if(window.scrollY>600){b.style.opacity='1';b.style.transform='translateY(0)';b.style.pointerEvents='auto';}else{b.style.opacity='0';b.style.transform='translateY(16px)';b.style.pointerEvents='none';}});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}})();
+  </script>
+</body>
+</html>
