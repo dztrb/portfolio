@@ -8,51 +8,11 @@
   <link rel="apple-touch-icon" href="favicon.png" />
   <script>
 (function () {
-  try {
-    var p = window.location.pathname;
-    var s = window.location.search;
-    var h = window.location.hash;
-    var href = window.location.href;
-    var needsReplace = false;
-
-    if (p.endsWith('.html')) {
-      p = p.slice(0, -5);
-      if (p === '/index') p = '/';
-      needsReplace = true;
-    }
-
-    var cleanHash = h;
-    if (href.indexOf('#') !== -1 && (!h || h === '#' || h === '')) {
-      cleanHash = '';
-      needsReplace = true;
-    }
-
-    if (needsReplace) {
-      window.history.replaceState(null, '', p + s + (cleanHash ? cleanHash : ''));
-    }
-  } catch (e) {}
-
   var key = 'maclean-dev-theme-mode';
   var theme = 'light';
   try { var mode = localStorage.getItem(key); if (mode === 'dark') { theme = 'dark'; } } catch (e) {}
   document.documentElement.setAttribute('data-theme', theme);
 })();
-
-window.addEventListener('hashchange', function () {
-  var href = window.location.href;
-  if (href.indexOf('#') !== -1 && (!window.location.hash || window.location.hash === '#')) {
-    try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch (e) {}
-  }
-});
-document.addEventListener('click', function (e) {
-  var a = e.target.closest('a');
-  if (a) {
-    var href = a.getAttribute('href');
-    if (href === '#' || href === 'projects.html#' || href === '/projects.html#') {
-      e.preventDefault();
-    }
-  }
-}, true);
 </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -304,10 +264,11 @@ header { position: -webkit-sticky !important; position: sticky !important; top: 
           </div>
         </div>
         <!-- Photo -->
-        <div class="reveal reveal-scale reveal-delay-1 flex-shrink-0 order-1 lg:order-2 relative mx-auto lg:mx-0 w-full max-w-[320px] xs:max-w-[350px] sm:max-w-[390px] lg:max-w-[440px] xl:max-w-[470px] px-2 sm:px-0">
-          <div class="absolute inset-0 -m-3 sm:-m-4 rounded-[2rem] bg-gradient-to-br from-slate-200 via-teal-100 to-orange-100 opacity-40 blur-2xl"></div>
-          <div class="hero-photo relative w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200/60 dark:border-slate-800">
-            <img src="hero.jpg" alt="Anthony Maclean - McLean Dev" class="w-full h-auto block object-contain" width="887" height="1024" loading="eager">
+        <div class="reveal reveal-scale reveal-delay-1 flex-shrink-0 order-1 lg:order-2 relative mx-auto lg:mx-0">
+          <div class="absolute inset-0 -m-4 rounded-[2rem] bg-gradient-to-br from-slate-200 via-teal-100 to-orange-100 opacity-40 blur-2xl"></div>
+          <div class="hero-photo w-64 h-72 sm:w-80 sm:h-[420px] lg:w-[400px] lg:h-[500px] max-w-full relative">
+            <img src="hero.jpg" alt="Anthony Maclean - McLean Dev" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-slate-900/5"></div>
           </div>
         </div>
       </div>
@@ -519,52 +480,22 @@ header { position: -webkit-sticky !important; position: sticky !important; top: 
   </button>
 
   <script>
-(function () {
-  try {
-    var p = window.location.pathname;
-    var s = window.location.search;
-    var h = window.location.hash;
-    var href = window.location.href;
-    var needsReplace = false;
-
-    if (p.endsWith('.html')) {
-      p = p.slice(0, -5);
-      if (p === '/index') p = '/';
-      needsReplace = true;
-    }
-
-    var cleanHash = h;
-    if (href.indexOf('#') !== -1 && (!h || h === '#' || h === '')) {
-      cleanHash = '';
-      needsReplace = true;
-    }
-
-    if (needsReplace) {
-      window.history.replaceState(null, '', p + s + (cleanHash ? cleanHash : ''));
-    }
-  } catch (e) {}
-
-  var key = 'maclean-dev-theme-mode';
-  var theme = 'light';
-  try { var mode = localStorage.getItem(key); if (mode === 'dark') { theme = 'dark'; } } catch (e) {}
-  document.documentElement.setAttribute('data-theme', theme);
-})();
-
-window.addEventListener('hashchange', function () {
-  var href = window.location.href;
-  if (href.indexOf('#') !== -1 && (!window.location.hash || window.location.hash === '#')) {
-    try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch (e) {}
-  }
-});
-document.addEventListener('click', function (e) {
-  var a = e.target.closest('a');
-  if (a) {
-    var href = a.getAttribute('href');
-    if (href === '#' || href === 'projects.html#' || href === '/projects.html#') {
-      e.preventDefault();
-    }
-  }
-}, true);
-</script>
+  (function() {
+    'use strict';
+    var key='maclean-dev-theme-mode',toggle=document.querySelector('[data-theme-toggle]'),sunIcon=document.querySelector('[data-theme-icon="sun"]'),moonIcon=document.querySelector('[data-theme-icon="moon"]');
+    function applyTheme(t){document.documentElement.setAttribute('data-theme',t);if(sunIcon)sunIcon.classList.toggle('hidden',t!=='dark');if(moonIcon)moonIcon.classList.toggle('hidden',t==='dark');if(toggle)toggle.setAttribute('aria-pressed',t==='dark'?'true':'false');}
+    var current=document.documentElement.getAttribute('data-theme')||'light';applyTheme(current);
+    if(toggle){toggle.addEventListener('click',function(){var n=current==='light'?'dark':'light';current=n;try{localStorage.setItem(key,n);}catch(e){}applyTheme(n);});}
+    var menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');
+    if(menuBtn&&mobileMenu){menuBtn.addEventListener('click',function(){var o=!mobileMenu.classList.contains('hidden');mobileMenu.classList.toggle('hidden',o);menuBtn.setAttribute('aria-expanded',!o);});mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){mobileMenu.classList.add('hidden');menuBtn.setAttribute('aria-expanded','false');});});}
+    var revealEls=document.querySelectorAll('.reveal');var revealObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('is-visible');});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(function(el){revealObs.observe(el);});
+    // Count up
+    var cObs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){var t=+x.target.dataset.count;if(!t)return;var c=0,inc=t/40,tm=setInterval(function(){c+=inc;if(c>=t){x.target.textContent=t+'+';clearInterval(tm);}else x.target.textContent=Math.floor(c)+'+';},50);cObs.unobserve(x.target);}});},{threshold:.5});
+    document.querySelectorAll('[data-count]').forEach(function(c){cObs.observe(c);});
+    var btt=document.getElementById('backToTop');
+    if(btt){window.addEventListener('scroll',function(){if(window.scrollY>600){btt.style.opacity='1';btt.style.transform='translateY(0)';btt.style.pointerEvents='auto';btt.setAttribute('aria-hidden','false');btt.removeAttribute('tabindex');}else{btt.style.opacity='0';btt.style.transform='translateY(16px)';btt.style.pointerEvents='none';btt.setAttribute('aria-hidden','true');btt.setAttribute('tabindex','-1');}});btt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});}
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=this.getAttribute('href');if(h&&h.length>1){var t=document.querySelector(h);if(t){e.preventDefault();var o=100,top=t.getBoundingClientRect().top+window.pageYOffset-o;window.scrollTo({top:top,behavior:'smooth'});}}});});
+  })();
+  </script>
 </body>
 </html>
