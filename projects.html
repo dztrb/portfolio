@@ -8,14 +8,51 @@
   <link rel="apple-touch-icon" href="favicon.png" />
   <script>
 (function () {
+  try {
+    var p = window.location.pathname;
+    var s = window.location.search;
+    var h = window.location.hash;
+    var href = window.location.href;
+    var needsReplace = false;
+
+    if (p.endsWith('.html')) {
+      p = p.slice(0, -5);
+      if (p === '/index') p = '/';
+      needsReplace = true;
+    }
+
+    var cleanHash = h;
+    if (href.indexOf('#') !== -1 && (!h || h === '#' || h === '')) {
+      cleanHash = '';
+      needsReplace = true;
+    }
+
+    if (needsReplace) {
+      window.history.replaceState(null, '', p + s + (cleanHash ? cleanHash : ''));
+    }
+  } catch (e) {}
+
   var key = 'maclean-dev-theme-mode';
   var theme = 'light';
-  try {
-    var mode = localStorage.getItem(key);
-    if (mode === 'dark') { theme = 'dark'; }
-  } catch (e) {}
+  try { var mode = localStorage.getItem(key); if (mode === 'dark') { theme = 'dark'; } } catch (e) {}
   document.documentElement.setAttribute('data-theme', theme);
 })();
+
+window.addEventListener('hashchange', function () {
+  var href = window.location.href;
+  if (href.indexOf('#') !== -1 && (!window.location.hash || window.location.hash === '#')) {
+    try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch (e) {}
+  }
+});
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a');
+  if (a) {
+    var href = a.getAttribute('href');
+    if (href === '#' || href === 'projects.html#' || href === '/projects.html#') {
+      e.preventDefault();
+    }
+  }
+}, true);
 </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -606,107 +643,52 @@ header { position: -webkit-sticky !important; position: sticky !important; top: 
 
   <!-- ===== SCRIPTS ===== -->
   <script>
-  (function() {
-    'use strict';
+(function () {
+  try {
+    var p = window.location.pathname;
+    var s = window.location.search;
+    var h = window.location.hash;
+    var href = window.location.href;
+    var needsReplace = false;
 
-    // ── Theme Toggle ──
-    var key = 'maclean-dev-theme-mode';
-    var toggle = document.querySelector('[data-theme-toggle]');
-    var sunIcon = document.querySelector('[data-theme-icon="sun"]');
-    var moonIcon = document.querySelector('[data-theme-icon="moon"]');
-
-    function applyTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      if (sunIcon) sunIcon.classList.toggle('hidden', theme !== 'dark');
-      if (moonIcon) moonIcon.classList.toggle('hidden', theme === 'dark');
-      if (toggle) toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    if (p.endsWith('.html')) {
+      p = p.slice(0, -5);
+      if (p === '/index') p = '/';
+      needsReplace = true;
     }
 
-    // Init
-    var current = document.documentElement.getAttribute('data-theme') || 'light';
-    applyTheme(current);
-
-    if (toggle) {
-      toggle.addEventListener('click', function() {
-        var next = current === 'light' ? 'dark' : 'light';
-        current = next;
-        try { localStorage.setItem(key, next); } catch(e) {}
-        applyTheme(next);
-      });
+    var cleanHash = h;
+    if (href.indexOf('#') !== -1 && (!h || h === '#' || h === '')) {
+      cleanHash = '';
+      needsReplace = true;
     }
 
-    // ── Mobile Menu ──
-    var menuBtn = document.getElementById('menuBtn');
-    var mobileMenu = document.getElementById('mobileMenu');
-
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', function() {
-        var isOpen = !mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden', isOpen);
-        menuBtn.setAttribute('aria-expanded', !isOpen);
-      });
-
-      mobileMenu.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.add('hidden');
-          menuBtn.setAttribute('aria-expanded', 'false');
-        });
-      });
+    if (needsReplace) {
+      window.history.replaceState(null, '', p + s + (cleanHash ? cleanHash : ''));
     }
+  } catch (e) {}
 
-    // ── Reveal on Scroll ──
-    var revealEls = document.querySelectorAll('.reveal');
-    var revealObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  var key = 'maclean-dev-theme-mode';
+  var theme = 'light';
+  try { var mode = localStorage.getItem(key); if (mode === 'dark') { theme = 'dark'; } } catch (e) {}
+  document.documentElement.setAttribute('data-theme', theme);
+})();
 
-    revealEls.forEach(function(el) { revealObs.observe(el); });
-
-    // ── Back to Top ──
-    var btt = document.getElementById('backToTop');
-    if (btt) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 600) {
-          btt.style.opacity = '1';
-          btt.style.transform = 'translateY(0)';
-          btt.style.pointerEvents = 'auto';
-          btt.setAttribute('aria-hidden', 'false');
-          btt.removeAttribute('tabindex');
-        } else {
-          btt.style.opacity = '0';
-          btt.style.transform = 'translateY(16px)';
-          btt.style.pointerEvents = 'none';
-          btt.setAttribute('aria-hidden', 'true');
-          btt.setAttribute('tabindex', '-1');
-        }
-      });
-
-      btt.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+window.addEventListener('hashchange', function () {
+  var href = window.location.href;
+  if (href.indexOf('#') !== -1 && (!window.location.hash || window.location.hash === '#')) {
+    try { window.history.replaceState(null, '', window.location.pathname + window.location.search); } catch (e) {}
+  }
+});
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a');
+  if (a) {
+    var href = a.getAttribute('href');
+    if (href === '#' || href === 'projects.html#' || href === '/projects.html#') {
+      e.preventDefault();
     }
-
-    // ── Smooth Scroll for Anchor Links ──
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var href = this.getAttribute('href');
-        if (href && href.length > 1) {
-          var target = document.querySelector(href);
-          if (target) {
-            e.preventDefault();
-            var offset = 100;
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-  })();
-  </script>
+  }
+}, true);
+</script>
 </body>
 </html>
